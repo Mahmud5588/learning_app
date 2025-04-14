@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,32 +17,60 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          leading: Expanded(
-            child: Row(
+          leading: CircleAvatar(backgroundColor: Colors.blue),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.notifications_active_outlined),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.bookmark_border_outlined),
+            ),
+          ],
+          title: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Good Morning 👋",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+              ),
+              Text(
+                "Andrew Ansley",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+              ),
+            ],
+          ),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Center(
+            child: Column(
               children: [
-                CircleAvatar(
-                  backgroundImage: AssetImage(
-                    "asset/images/avatar.png",
+                TextField(
+                  decoration: InputDecoration(
+                    hintText: "Search",
+                    suffixIcon: Icon(Icons.tune_sharp),
+                    prefixIcon: Icon(Icons.search),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey[200]!),
+                    ),
+
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5),
+                    ),
                   ),
                 ),
-                Column(
-                  children: [
-                    Text(
-                      "Good Morning 👋",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    Text("Andrew Ansley",style: TextStyle(fontSize: 20,
-                      fontWeight: FontWeight.w700,),),
-                  ],
+                SizedBox(height: screenHeight * 0.02),
+                Text(
+                  "Today",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
                 ),
               ],
             ),
           ),
         ),
-        body: Center(child: Column(children: [])),
       ),
     );
   }

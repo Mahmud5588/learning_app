@@ -1,9 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:learnig_app/core/strings/strings.dart';
 
 
 import '../../../../../core/route/route_names.dart';
+import '../../../../../core/textstyle/app_text_style.dart';
 import '../../widget/code_field.dart';
 import '../../widget/my_elevated_button.dart';
 
@@ -60,17 +62,14 @@ class _SendCodePageState extends State<SendCodePage> {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      resizeToAvoidBottomInset: true, // Klaviatura uchun moslashuv
+      resizeToAvoidBottomInset: true,
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
         title: Text(
-          "Forgot Password",
-          style: TextStyle(
-            fontSize: screenWidth * 0.06,
-            fontWeight: FontWeight.w700,
-          ),
+          AppStrings.forgotPassword,
+          style: AppTextStyles.heading4()
         ),
         leading: IconButton(
           onPressed: () {
@@ -88,11 +87,8 @@ class _SendCodePageState extends State<SendCodePage> {
               children: [
                 SizedBox(height: screenHeight * 0.1),
                 Text(
-                  "Code has been sent to +1 111 ******99",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: screenWidth * 0.045,
-                  ),
+                  "${AppStrings.codeSend} +1 111 ******99",
+                  style:AppTextStyles.bodyLargeMedium(color: Colors.black),
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: screenHeight * 0.02),
@@ -120,7 +116,7 @@ class _SendCodePageState extends State<SendCodePage> {
                 ),
                 SizedBox(height: screenHeight * 0.3),
                 MyElevatedButton(
-                  text: "Verify",
+                  text: AppStrings.verify,
                   onPressed: () {
                     Navigator.pushNamed(context, RouteNames.createNewPassword);
                   },

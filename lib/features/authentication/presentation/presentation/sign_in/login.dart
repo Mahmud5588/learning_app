@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-
+import 'package:learnig_app/core/strings/strings.dart';
+import '../../../../../core/color/app_color.dart';
+import '../../../../../core/responsive/app_responsive.dart';
 import '../../../../../core/route/route_names.dart';
+import '../../../../../core/textstyle/app_text_style.dart';
 import '../../widget/button_continue_with.dart';
 import '../../widget/my_elevated_button.dart';
 import '../../widget/my_textfield.dart';
-
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -17,34 +19,28 @@ class _LoginState extends State<Login> {
   bool _isRemember = false;
   bool observePassword = true;
 
+
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(backgroundColor: Colors.white, elevation: 0),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
+          padding: EdgeInsets.symmetric(horizontal: appWidth(5)),
           child: Center(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Login to your Account",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: screenWidth * 0.08,
-                    color: Colors.black,
-                  ),
+                  AppStrings.loginToAccount,
+                  style: AppTextStyles.heading1(),
                 ),
-                SizedBox(height: screenHeight * 0.03),
-                const MyTextField(texts: "Email", icon: Icon(Icons.email)),
-                SizedBox(height: screenHeight * 0.02),
+                SizedBox(height: appHeight(3)),
+                const MyTextField(texts: AppStrings.email, icon: Icon(Icons.email)),
+                SizedBox(height: appHeight(2)),
                 MyTextField(
-                  texts: "Password",
+                  texts: AppStrings.password,
                   obscureText: observePassword,
                   icon: const Icon(Icons.lock),
                   element: IconButton(
@@ -53,22 +49,18 @@ class _LoginState extends State<Login> {
                         observePassword = !observePassword;
                       });
                     },
-                    icon:
-                        observePassword
-                            ? const Icon(Icons.visibility)
-                            : const Icon(Icons.visibility_off),
+                    icon: observePassword
+                        ? const Icon(Icons.visibility)
+                        : const Icon(Icons.visibility_off),
                   ),
                 ),
-                SizedBox(height: screenHeight * 0.02),
+                SizedBox(height: appHeight(2)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Remember me",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: screenWidth * 0.035,
-                      ),
+                      AppStrings.rememberMe,
+                      style: AppTextStyles.bodyMediumSemiBold(color: AppColor.greyScale500),
                     ),
                     Checkbox(
                       activeColor: Colors.blue,
@@ -84,89 +76,81 @@ class _LoginState extends State<Login> {
                     ),
                   ],
                 ),
-                SizedBox(height: screenHeight * 0.03),
-                MyElevatedButton(text: "Sign In", onPressed: () {}),
+                SizedBox(height: appHeight(3)),
+                MyElevatedButton(text: AppStrings.signIn, onPressed: () {}),
                 TextButton(
                   onPressed: () {
                     Navigator.pushNamed(context, RouteNames.forgotPasswordPage);
                   },
                   child: Text(
-                    "Forgot the password?",
-                    style: TextStyle(
-                      color: Colors.blue,
-                      fontWeight: FontWeight.w600,
-                      fontSize: screenWidth * 0.04,
-                    ),
+                    AppStrings.forgotPassword,
+                    style: AppTextStyles.bodyLargeSemiBold(color: AppColor.blue),
                   ),
                 ),
-                SizedBox(height: screenHeight * 0.02),
+                SizedBox(height: appHeight(2)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Expanded(
-                      child: Divider(thickness: 1, color: Colors.grey),
+                      child: Divider(thickness: 1, color: AppColor.greyScale500),
                     ),
-                    SizedBox(width: screenWidth * 0.02),
+                    SizedBox(width: appWidth(2)),
                     Text(
-                      "Or Continue with",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.grey,
-                        fontSize: screenWidth * 0.035,
-                      ),
+                      AppStrings.orWith,
+                      style: AppTextStyles.bodyXLargeSemiBold(color: AppColor.greyScale500),
                     ),
                     const Expanded(
-                      child: Divider(thickness: 1, color: Colors.grey),
+                      child: Divider(thickness: 1, color: AppColor.greyScale500),
                     ),
                   ],
                 ),
-                SizedBox(height: screenHeight * 0.02),
+                SizedBox(height: appHeight(2)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ButtonContinueWith(
                       icon: Icon(
                         Icons.facebook_outlined,
-                        size: screenWidth * 0.08,
-                        color: Colors.blue,
+                        size: appWidth(8),
+                        color: AppColor.blue,
                       ),
                       onPressed: () {},
                     ),
-                    SizedBox(width: screenWidth * 0.05),
+                    SizedBox(width: appWidth(5)),
                     ButtonContinueWith(
                       icon: Image.asset(
                         "assets/images/google.png",
-                        width: screenWidth * 0.08,
-                        height: screenWidth * 0.08,
+                        width: appWidth(8),
+                        height: appWidth(8),
                       ),
                       onPressed: () {},
                     ),
-                    SizedBox(width: screenWidth * 0.05),
+                    SizedBox(width: appWidth(5)),
                     ButtonContinueWith(
                       icon: Icon(
                         Icons.apple,
                         color: Colors.black,
-                        size: screenWidth * 0.08,
+                        size: appWidth(8),
                       ),
                       onPressed: () {},
                     ),
                   ],
                 ),
-                SizedBox(height: screenHeight * 0.03),
+                SizedBox(height: appHeight(3)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      "Don't have an account?",
-                      style: TextStyle(color: Colors.grey),
+                      AppStrings.haveNotAccount,
+                      style: TextStyle(color: AppColor.greyScale500),
                     ),
                     TextButton(
                       onPressed: () {
                         Navigator.pushNamed(context, RouteNames.signUp);
                       },
-                      child: const Text(
-                        "Sign Up",
-                        style: TextStyle(color: Colors.blue),
+                      child: Text(
+                        AppStrings.signUp,
+                        style: TextStyle(color: AppColor.blue),
                       ),
                     ),
                   ],

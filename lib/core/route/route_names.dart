@@ -11,4 +11,6 @@ class RouteNames {
   static const String homePage = "homePage";
   static const String createNewPin = "createNewPin";
   static const String setFingerPrint = "setFingerPrint";
+  static const String notifications = "notifications";
+  static const String bookmark = "bookmark";
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:learnig_app/core/color/app_color.dart';
+import '../../../../core/responsive/app_responsive.dart';
 
 class MyElevatedButton extends StatelessWidget {
   final String text;
@@ -15,23 +17,23 @@ class MyElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 55,
+      height: appHeight(6.875), // 55 / 800 ~ 0.06875 * screenHeight
       width: double.infinity,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor:
-              color != null ? Colors.grey : const Color(0xff3366ff),
+          color != null ? AppColor.greyScale600 : AppColor.disabledButton,
           side: const BorderSide(color: Color(0x00eeeeee)),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50),
+            borderRadius: BorderRadius.circular(appWidth(12.5)), // 50 / 400 ~ 0.125 * screenWidth
           ),
         ),
         child: Text(
           text,
-          style: const TextStyle(
+          style: TextStyle(
             fontWeight: FontWeight.w700,
-            fontSize: 16,
+            fontSize: appWidth(4), // 16 / 400 ~ 0.04 * screenWidth
             color: Colors.white,
           ),
         ),

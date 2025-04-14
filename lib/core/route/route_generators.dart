@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learnig_app/core/route/route_names.dart';
-
+import 'package:learnig_app/features/home/presentation/pages/bookmark.dart';
 
 import '../../features/authentication/presentation/presentation/forgot_password/create_new_password.dart';
 import '../../features/authentication/presentation/presentation/forgot_password/forgot_password_page.dart';
@@ -11,6 +11,7 @@ import '../../features/authentication/presentation/presentation/sign_in/login.da
 import '../../features/authentication/presentation/presentation/sign_in/sign_in.dart';
 import '../../features/authentication/presentation/presentation/sign_up/sign_up.dart';
 import '../../features/home/presentation/pages/home_page.dart';
+import '../../features/home/presentation/pages/notifications.dart';
 import '../../features/profile/presentation/pages/create_new_pin.dart';
 import '../../features/profile/presentation/pages/profile_page.dart';
 import '../../features/profile/presentation/pages/set_finger_print.dart';
@@ -47,6 +48,9 @@ class AppRoute {
         return MaterialPageRoute(builder: (_) => CreateNewPin());
       case RouteNames.setFingerPrint:
         return MaterialPageRoute(builder: (_) => SetFingerPrint());
+      case RouteNames.notifications:
+        return MaterialPageRoute(builder: (_) => Notifications());case RouteNames.bookmark:
+        return MaterialPageRoute(builder: (_) => Bookmark());
 
       default:
         return _defaultRoute();

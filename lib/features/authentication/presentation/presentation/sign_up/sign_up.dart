@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-
+import '../../../../../core/responsive/app_responsive.dart';
 import '../../../../../core/route/route_names.dart';
+import '../../../../../core/strings/strings.dart';
 import '../../widget/button_continue_with.dart';
 import '../../widget/my_elevated_button.dart';
 import '../../widget/my_textfield.dart';
@@ -19,31 +20,28 @@ class _SignUpState extends State<SignUp> {
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(backgroundColor: Colors.white, elevation: 0),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
+          padding: EdgeInsets.symmetric(horizontal: appWidth(5)),
           child: Center(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: screenHeight * 0.05),
+                SizedBox(height: appHeight(5)),
                 Text(
                   "Create your Account",
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
-                    fontSize: screenWidth * 0.08,
+                    fontSize: appWidth(8),
                     color: Colors.black,
                   ),
                 ),
-                SizedBox(height: screenHeight * 0.03),
+                SizedBox(height: appHeight(3)),
                 const MyTextField(texts: "Email", icon: Icon(Icons.email)),
-                SizedBox(height: screenHeight * 0.02),
+                SizedBox(height: appHeight(2)),
                 MyTextField(
                   texts: "Password",
                   obscureText: observePassword,
@@ -54,13 +52,12 @@ class _SignUpState extends State<SignUp> {
                         observePassword = !observePassword;
                       });
                     },
-                    icon:
-                        observePassword
-                            ? const Icon(Icons.visibility)
-                            : const Icon(Icons.visibility_off),
+                    icon: observePassword
+                        ? const Icon(Icons.visibility)
+                        : const Icon(Icons.visibility_off),
                   ),
                 ),
-                SizedBox(height: screenHeight * 0.02),
+                SizedBox(height: appHeight(2)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -68,7 +65,7 @@ class _SignUpState extends State<SignUp> {
                       "Remember me",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: screenWidth * 0.035,
+                        fontSize: appWidth(3.5),
                       ),
                     ),
                     Checkbox(
@@ -85,76 +82,76 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ],
                 ),
-                SizedBox(height: screenHeight * 0.03),
+                SizedBox(height: appHeight(3)),
                 MyElevatedButton(text: "Sign In", onPressed: () {}),
-                SizedBox(height: screenHeight * 0.03),
+                SizedBox(height: appHeight(3)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Expanded(
                       child: Divider(
-                        thickness: screenWidth * 0.002,
+                        thickness: appWidth(0.2),
                         color: Colors.grey,
                       ),
                     ),
-                    SizedBox(width: screenWidth * 0.02),
+                    SizedBox(width: appWidth(2)),
                     Text(
                       "Or Continue with",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.grey,
-                        fontSize: screenWidth * 0.035,
+                        fontSize: appWidth(3.5),
                       ),
                     ),
                     Expanded(
                       child: Divider(
-                        thickness: screenWidth * 0.002,
+                        thickness: appWidth(0.2),
                         color: Colors.grey,
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: screenHeight * 0.02),
+                SizedBox(height: appHeight(2)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ButtonContinueWith(
                       icon: Icon(
                         Icons.facebook_outlined,
-                        size: screenWidth * 0.06,
+                        size: appWidth(6),
                         color: Colors.blue,
                       ),
                       onPressed: () {},
                     ),
-                    SizedBox(width: screenWidth * 0.05),
+                    SizedBox(width: appWidth(5)),
                     ButtonContinueWith(
                       icon: Image.asset(
                         "assets/images/google.png",
-                        width: screenWidth * 0.06,
-                        height: screenWidth * 0.06,
+                        width: appWidth(6),
+                        height: appWidth(6),
                       ),
                       onPressed: () {},
                     ),
-                    SizedBox(width: screenWidth * 0.05),
+                    SizedBox(width: appWidth(5)),
                     ButtonContinueWith(
                       icon: Icon(
                         Icons.apple,
                         color: Colors.black,
-                        size: screenWidth * 0.06,
+                        size: appWidth(6),
                       ),
                       onPressed: () {},
                     ),
                   ],
                 ),
-                SizedBox(height: screenHeight * 0.03),
+                SizedBox(height: appHeight(3)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Already have an account?",
+                      AppStrings.alreadyHave,
                       style: TextStyle(
                         color: Colors.grey,
-                        fontSize: screenWidth * 0.035,
+                        fontSize: appWidth(3.5),
                       ),
                     ),
                     TextButton(
@@ -162,10 +159,10 @@ class _SignUpState extends State<SignUp> {
                         Navigator.pushNamed(context, RouteNames.signIn);
                       },
                       child: Text(
-                        "Sign In",
+                        AppStrings.signIn,
                         style: TextStyle(
                           color: Colors.blue,
-                          fontSize: screenWidth * 0.035,
+                          fontSize: appWidth(3.5),
                         ),
                       ),
                     ),

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-
+import 'package:learnig_app/core/color/app_color.dart';
+import 'package:learnig_app/core/strings/strings.dart';
+import '../../../../../core/responsive/app_responsive.dart';
 import '../../../../../core/route/route_names.dart';
+import '../../../../../core/textstyle/app_text_style.dart';
 import '../../widget/continue_with_button.dart';
 import '../../widget/my_elevated_button.dart';
 
@@ -10,107 +13,97 @@ class SignIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColor.white,
         elevation: 0,
         leading: IconButton(
           onPressed: () {},
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: AppColor.black),
         ),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: AppColor.white,
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
+          padding: EdgeInsets.symmetric(horizontal: appWidth(5)), // 0.05 * screenWidth
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(child: Image.asset("assets/images/sign_in.png")),
-
                 Text(
-                  "Let's you in",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: screenWidth * 0.08,
-                    color: Colors.black,
-                  ),
+                  AppStrings.letsYouIn,
+                  style: AppTextStyles.heading1(),
                 ),
-                SizedBox(height: screenHeight * 0.03),
+                SizedBox(height: appHeight(3)), // 0.03 * screenHeight
                 ContinueWithButton(
                   onPressed: () {},
-                  texts: "Continue with Facebook",
+                  texts: AppStrings.continueFacebook,
                   icon: Icon(
                     Icons.facebook,
-                    size: screenWidth * 0.06,
-                    color: Colors.blue,
+                    size: appWidth(6), // 0.06 * screenWidth
+                    color: AppColor.blue,
                   ),
                 ),
-                SizedBox(height: screenHeight * 0.02),
+                SizedBox(height: appHeight(2)), // 0.02 * screenHeight
                 ContinueWithButton(
                   onPressed: () {},
-                  texts: "Continue with Google",
+                  texts: AppStrings.continueGoogle,
                   icon: Image.asset(
                     "assets/images/google.png",
-                    width: screenWidth * 0.05,
-                    height: screenWidth * 0.05,
+                    width: appWidth(5), // 0.05 * screenWidth
+                    height: appWidth(5), // 0.05 * screenWidth
                   ),
                 ),
-                SizedBox(height: screenHeight * 0.02),
+                SizedBox(height: appHeight(2)), // 0.02 * screenHeight
                 ContinueWithButton(
                   onPressed: () {},
-                  texts: "Continue with Apple",
+                  texts: AppStrings.continueApple,
                   icon: Icon(
                     Icons.apple,
-                    size: screenWidth * 0.06,
-                    color: Colors.black,
+                    size: appWidth(6), // 0.06 * screenWidth
+                    color: AppColor.black,
                   ),
                 ),
-                SizedBox(height: screenHeight * 0.03),
+                SizedBox(height: appHeight(3)), // 0.03 * screenHeight
                 Row(
                   children: [
                     Expanded(
                       child: Divider(
                         color: Colors.grey,
-                        thickness: screenWidth * 0.002,
+                        thickness: appWidth(0.2), // 0.002 * screenWidth
                       ),
                     ),
-                    SizedBox(width: screenWidth * 0.02),
+                    SizedBox(width: appWidth(2)), // 0.02 * screenWidth
                     Text(
-                      "OR",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: screenWidth * 0.04,
-                      ),
+                      AppStrings.or,
+                      style: AppTextStyles.bodyXLargeSemiBold(color: AppColor.greyScale500),
                     ),
                     Expanded(
                       child: Divider(
-                        color: Colors.grey,
-                        thickness: screenWidth * 0.002,
+                        color: AppColor.greyScale500,
+                        thickness: appWidth(0.2), // 0.002 * screenWidth
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: screenHeight * 0.03),
+                SizedBox(height: appHeight(3)), // 0.03 * screenHeight
                 MyElevatedButton(
-                  text: "Sign in with password",
+                  text: AppStrings.signInWithPassword,
                   onPressed: () {
                     Navigator.pushNamed(context, RouteNames.login);
                   },
                 ),
-                SizedBox(height: screenHeight * 0.03),
+                SizedBox(height: appHeight(3)), // 0.03 * screenHeight
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Don't have an account?",
+                      AppStrings.haveNotAccount,
                       style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: screenWidth * 0.035,
+                        color: AppColor.greyScale500,
+                        fontSize: appWidth(3.5), // 0.035 * screenWidth
                       ),
                     ),
                     TextButton(
@@ -118,10 +111,10 @@ class SignIn extends StatelessWidget {
                         Navigator.pushNamed(context, RouteNames.signUp);
                       },
                       child: Text(
-                        "Sign up",
+                        AppStrings.signUp,
                         style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: screenWidth * 0.035,
+                          color: AppColor.blue,
+                          fontSize: appWidth(3.5), // 0.035 * screenWidth
                         ),
                       ),
                     ),

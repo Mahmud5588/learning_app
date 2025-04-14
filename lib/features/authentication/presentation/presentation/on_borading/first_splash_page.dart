@@ -1,9 +1,9 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-
+import 'package:learnig_app/core/color/app_color.dart';
 import '../../../../../core/route/route_names.dart';
+import '../../../../../core/responsive/app_responsive.dart';
 
 class FirstSplashPage extends StatefulWidget {
   const FirstSplashPage({super.key});
@@ -23,22 +23,21 @@ class _FirstSplashPageState extends State<FirstSplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
+    AppResponsive.init(context);
 
     return Scaffold(
-      backgroundColor: const Color(0xff3366ff),
+      backgroundColor: AppColor.disabledButton,
       body: SafeArea(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                height: screenHeight * 0.3,
+                height: appHeight(30),
                 child: Image.asset("assets/images/logo.png"),
               ),
-              SizedBox(height: screenHeight * 0.1),
-              SpinKitCircle(color: Colors.white, size: screenWidth * 0.1),
+              SizedBox(height: appHeight(10)),
+              SpinKitCircle(color: AppColor.white, size: appWidth(10)),
             ],
           ),
         ),

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-
+import 'package:learnig_app/core/color/app_color.dart';
+import 'package:learnig_app/core/strings/strings.dart';
+import 'package:learnig_app/core/textstyle/app_text_style.dart';
 import '../../../../../core/route/route_names.dart';
-import '../../widget/forgot_widget.dart' show ContactOptionCard;
+import '../../widget/forgot_widget.dart';
 import '../../widget/my_elevated_button.dart';
-
+import '../../../../../core/responsive/app_responsive.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
@@ -17,84 +19,55 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
-
+    AppResponsive.init(context);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(
-          "Forgot Password",
-          style: TextStyle(
-            fontSize: screenWidth * 0.06,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-        backgroundColor: Colors.white,
+        title: Text(AppStrings.forgotPassword, style: AppTextStyles.heading4()),
+        backgroundColor: AppColor.white,
         leading: IconButton(
-          onPressed: () {
-            Navigator.pushNamed(context, RouteNames.signIn);
-          },
+          onPressed: () => Navigator.pushNamed(context, RouteNames.signIn),
           icon: const Icon(Icons.arrow_back),
         ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.all(screenWidth * 0.04),
+            padding: EdgeInsets.all(appWidth(4)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: screenHeight * 0.3,
+                  height: appHeight(30),
                   child: Center(
                     child: Image.asset("assets/images/forgot_password.png"),
                   ),
                 ),
-                SizedBox(height: screenHeight * 0.05),
+                SizedBox(height: appHeight(4)),
                 Text(
-                  "Select which contact details should we use to reset your password",
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: screenWidth * 0.045,
-                  ),
+                  AppStrings.selectContact,
+                  style: AppTextStyles.bodyLargeMedium(color: AppColor.greyScale500),
                 ),
-                SizedBox(height: screenHeight * 0.02),
-                Column(
-                  children: [
-                    ContactOptionCard(
-                      icon: Icons.sms,
-                      title: "Via SMS",
-                      value: "+1 111 ******99",
-                      isSelected: selectedIndex == 0,
-                      onTap: () {
-                        setState(() {
-                          selectedIndex = 0;
-                        });
-                      },
-                    ),
-                    SizedBox(height: screenHeight * 0.01),
-                    ContactOptionCard(
-                      icon: Icons.email,
-                      title: "Via Email",
-                      value: "and***ley@yourdomain.com",
-                      isSelected: selectedIndex == 1,
-                      onTap: () {
-                        setState(() {
-                          selectedIndex = 1;
-                        });
-                      },
-                    ),
-                  ],
+                SizedBox(height: appHeight(2)),
+                ContactOptionCard(
+                  icon: Icons.sms,
+                  title: AppStrings.via + AppStrings.sms,
+                  value: "+1 111 ******99",
+                  isSelected: selectedIndex == 0,
+                  onTap: () => setState(() => selectedIndex = 0),
                 ),
-                SizedBox(height: screenHeight * 0.01),
-
+                SizedBox(height: appHeight(1)),
+                ContactOptionCard(
+                  icon: Icons.email,
+                  title: AppStrings.via + AppStrings.email,
+                  value: "and***ley@yourdomain.com",
+                  isSelected: selectedIndex == 1,
+                  onTap: () => setState(() => selectedIndex = 1),
+                ),
+                SizedBox(height: appHeight(3)),
                 MyElevatedButton(
-                  text: "Continue",
-                  onPressed: () {
-                    Navigator.pushNamed(context, RouteNames.sendCodePage);
-                  },
+                  text: AppStrings.continueWord,
+                  onPressed: () => Navigator.pushNamed(context, RouteNames.sendCodePage),
                 ),
               ],
             ),

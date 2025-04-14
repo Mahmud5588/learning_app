@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:learnig_app/core/strings/strings.dart';
 import '../../../../../core/route/route_names.dart';
+import '../../../../../core/responsive/app_responsive.dart';
 import '../../widget/on_boarding_widget.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -16,19 +17,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   final List<Map<String, dynamic>> _onboardingData = [
     {
-      'title': 'We provide the best learning courses & great mentors!',
+      'title': AppStrings.splash1,
       'image': 'assets/images/on_boarding1.png',
-      'buttonText': 'Next',
+      'buttonText': AppStrings.next,
     },
     {
-      'title': 'Learn anytime and anywhere easily and conveniently',
+      'title': AppStrings.splash2,
       'image': 'assets/images/on_boarding2.png',
-      'buttonText': 'Next',
+      'buttonText': AppStrings.next,
     },
     {
-      'title': 'Let\'s improve your skills together with Elera right now!',
+      'title': AppStrings.splash3,
       'image': 'assets/images/on_boarding3.png',
-      'buttonText': 'Get Started',
+      'buttonText': AppStrings.getStarted,
     },
   ];
 
@@ -38,7 +39,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     super.dispose();
   }
 
-  // Keyingi sahifaga o'tish funksiyasi
   void _goToNextPage() {
     if (_currentPage < _onboardingData.length - 1) {
       _pageController.nextPage(
@@ -52,17 +52,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // Ekran o'lchamlarini olish
-    final size = MediaQuery.of(context).size;
-    final screenHeight = size.height;
-    final screenWidth = size.width;
-
-    // Responsive qiymatlar
-    final buttonVerticalMargin = screenHeight * 0.03;
-    final horizontalPadding = screenWidth * 0.05; // 5% from each side
-    final indicatorHeight = screenHeight * 0.01;
-    final indicatorWidth = screenWidth * 0.06;
-    final indicatorSmallWidth = screenHeight * 0.01;
+    AppResponsive.init(context);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -74,7 +64,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            // PageView - carousel
+            // PageView - onboarding content
             Expanded(
               child: PageView.builder(
                 controller: _pageController,
@@ -93,38 +83,32 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             ),
 
-            // Indicator dots - responsive
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+            // Indicator dots
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: appWidth(5)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(_onboardingData.length, (index) {
                   return Container(
-                    margin: EdgeInsets.symmetric(
-                      horizontal: screenWidth * 0.01,
-                    ),
-                    height: indicatorHeight,
-                    width:
-                        index == _currentPage
-                            ? indicatorWidth
-                            : indicatorSmallWidth,
+                    margin: EdgeInsets.symmetric(horizontal: appWidth(1)),
+                    height: appHeight(1),
+                    width: index == _currentPage ? appWidth(6) : appWidth(2),
                     decoration: BoxDecoration(
-                      color:
-                          index == _currentPage
-                              ? const Color(0xff3366ff)
-                              : Colors.grey.shade300,
-                      borderRadius: BorderRadius.circular(indicatorHeight / 2),
+                      color: index == _currentPage
+                          ? const Color(0xff3366ff)
+                          : Colors.grey.shade300,
+                      borderRadius: BorderRadius.circular(appHeight(0.5)),
                     ),
                   );
                 }),
               ),
             ),
 
-            // Tugma - responsive
+            // Button
             Container(
               margin: EdgeInsets.symmetric(
-                horizontal: horizontalPadding,
-                vertical: buttonVerticalMargin,
+                horizontal: appWidth(5),
+                vertical: appHeight(3),
               ),
               child: ResponsiveElevatedButton(
                 text: _onboardingData[_currentPage]['buttonText'],
@@ -138,7 +122,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 }
 
-// Responsive ElevatedButton
+
 class ResponsiveElevatedButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
@@ -151,25 +135,17 @@ class ResponsiveElevatedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Ekran o'lchamlarini olish
-    final screenHeight = MediaQuery.of(context).size.height;
-
-    // Responsive qiymatlar
-    final buttonHeight = screenHeight * 0.07; // Ekran balandligining 7%
-    final fontSize = screenHeight * 0.018; // Ekran balandligining 1.8%
+    AppResponsive.init(context);
 
     return SizedBox(
-      height: buttonHeight,
+      height: appHeight(7),
       width: double.infinity,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: const Color(0xff3366ff),
-          side: const BorderSide(color: Color(0x00eeeeee)),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(
-              buttonHeight / 2,
-            ),
+            borderRadius: BorderRadius.circular(appHeight(3.5)),
           ),
           elevation: 2,
         ),
@@ -177,7 +153,7 @@ class ResponsiveElevatedButton extends StatelessWidget {
           text,
           style: TextStyle(
             fontWeight: FontWeight.w700,
-            fontSize: fontSize,
+            fontSize: appHeight(2),
             color: Colors.white,
           ),
         ),

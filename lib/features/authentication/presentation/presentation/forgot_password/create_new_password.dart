@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:learnig_app/core/color/app_color.dart';
+import 'package:learnig_app/core/strings/strings.dart';
+import 'package:learnig_app/core/textstyle/app_text_style.dart';
 
 import '../../../../../core/route/route_names.dart';
 import '../../widget/my_elevated_button.dart';
 import '../../widget/my_textfield.dart';
+import '../../../../../core/responsive/app_responsive.dart';
 
 class CreateNewPassword extends StatefulWidget {
   const CreateNewPassword({super.key});
@@ -19,20 +23,15 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColor.white,
       appBar: AppBar(
+        backgroundColor: AppColor.white,
         title: Text(
-          "Create New Password",
-          style: TextStyle(
-            fontSize: screenWidth * 0.06,
-            fontWeight: FontWeight.w700,
-          ),
+          AppStrings.createNewPassword,
+          style: AppTextStyles.heading4(),
         ),
-        backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () {
             Navigator.pushNamed(context, RouteNames.sendCodePage);
@@ -42,29 +41,26 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(screenWidth * 0.04),
+          padding: EdgeInsets.all(appWidth(4)),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: screenHeight * 0.3,
+                  height: appHeight(30),
                   child: Center(
                     child: Image.asset("assets/images/create_new_password.png"),
                   ),
                 ),
-                SizedBox(height: screenHeight * 0.05),
+                SizedBox(height: appHeight(5)),
                 Text(
-                  "Create Your New Password",
+                  AppStrings.your,
                   textAlign: TextAlign.start,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: screenWidth * 0.045,
-                  ),
+                  style: AppTextStyles.bodyXLargeMedium(color: AppColor.greyScale500),
                 ),
-                SizedBox(height: screenHeight * 0.03),
+                SizedBox(height: appHeight(3)),
                 MyTextField(
-                  texts: "New Password",
+                  texts: AppStrings.newPassword,
                   obscureText: observePassword,
                   icon: const Icon(Icons.lock, color: Colors.black),
                   element: IconButton(
@@ -73,15 +69,14 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                         observePassword = !observePassword;
                       });
                     },
-                    icon:
-                        observePassword
-                            ? const Icon(Icons.visibility)
-                            : const Icon(Icons.visibility_off),
+                    icon: observePassword
+                        ? const Icon(Icons.visibility)
+                        : const Icon(Icons.visibility_off),
                   ),
                 ),
-                SizedBox(height: screenHeight * 0.02),
+                SizedBox(height: appHeight(2)),
                 MyTextField(
-                  texts: "Repeat Password",
+                  texts: AppStrings.repeatPassword,
                   obscureText: observeRepeatPassword,
                   icon: const Icon(Icons.lock, color: Colors.black),
                   element: IconButton(
@@ -90,22 +85,18 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                         observeRepeatPassword = !observeRepeatPassword;
                       });
                     },
-                    icon:
-                        observeRepeatPassword
-                            ? const Icon(Icons.visibility)
-                            : const Icon(Icons.visibility_off),
+                    icon: observeRepeatPassword
+                        ? const Icon(Icons.visibility)
+                        : const Icon(Icons.visibility_off),
                   ),
                 ),
-                SizedBox(height: screenHeight * 0.03),
+                SizedBox(height: appHeight(3)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Remember me",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: screenWidth * 0.035,
-                      ),
+                      AppStrings.rememberMe,
+                      style: AppTextStyles.bodyLargeSemiBold(color: AppColor.greyScale500),
                     ),
                     Checkbox(
                       activeColor: Colors.blue,
@@ -121,9 +112,9 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: appHeight(2.5)),
                 MyElevatedButton(
-                  text: "Continue",
+                  text: AppStrings.continueWord,
                   onPressed: () {
                     showCongratsDialog(context);
                   },
@@ -138,6 +129,8 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
 }
 
 void showCongratsDialog(BuildContext context) {
+  AppResponsive.init(context);
+
   showDialog(
     context: context,
     barrierDismissible: false,
@@ -151,27 +144,26 @@ void showCongratsDialog(BuildContext context) {
         backgroundColor: Colors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+          padding: EdgeInsets.symmetric(
+            horizontal: appWidth(6),
+            vertical: appHeight(4),
+          ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Image.asset("assets/images/Group.png", height: 100),
-              const SizedBox(height: 20),
-              const Text(
-                "Congratulations!",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue,
-                ),
+              Image.asset("assets/images/Group.png", height: appHeight(12)),
+              SizedBox(height: appHeight(2.5)),
+              Text(
+                AppStrings.congratulations,
+                style: AppTextStyles.bodyLargeSemiBold(color: AppColor.blue),
               ),
-              const SizedBox(height: 12),
-              const Text(
-                "Your account is ready to use.\nYou will be redirected to the Home page\nin a few seconds.",
+              SizedBox(height: appHeight(1.5)),
+              Text(
+                AppStrings.congratulationsAboutPassword,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 16, color: Colors.black54),
+                style: AppTextStyles.bodyLargeRegular(),
               ),
-              const SizedBox(height: 24),
+              SizedBox(height: appHeight(3)),
               const SpinKitCircle(color: Colors.blue, size: 40),
             ],
           ),

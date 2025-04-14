@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../../../../core/responsive/app_responsive.dart';
 
 class CodeField extends StatelessWidget {
   final FocusNode currentNode;
@@ -16,7 +17,7 @@ class CodeField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 60,
+      width: appWidth(15), // 60 / 400 ~ 0.15 * screenWidth
       child: TextField(
         focusNode: currentNode,
         obscureText: obscureCode ?? false,
@@ -29,7 +30,9 @@ class CodeField extends StatelessWidget {
         ],
         decoration: InputDecoration(
           counterText: '',
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(appWidth(3)), // 12 / 400 ~ 0.03 * screenWidth
+          ),
         ),
         onChanged: (value) {
           if (value.isNotEmpty && nextNode != null) {
