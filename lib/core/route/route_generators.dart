@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:learnig_app/core/route/route_names.dart';
+import 'package:learnig_app/features/authentication/presentation/presentation/sign_up/otp.dart';
 import 'package:learnig_app/features/home/presentation/pages/bookmark.dart';
+import 'package:learnig_app/features/home/presentation/pages/mentors.dart';
+import 'package:learnig_app/features/home/presentation/pages/top_courses.dart';
 
 import '../../features/authentication/presentation/presentation/forgot_password/create_new_password.dart';
 import '../../features/authentication/presentation/presentation/forgot_password/forgot_password_page.dart';
@@ -49,8 +52,15 @@ class AppRoute {
       case RouteNames.setFingerPrint:
         return MaterialPageRoute(builder: (_) => SetFingerPrint());
       case RouteNames.notifications:
-        return MaterialPageRoute(builder: (_) => Notifications());case RouteNames.bookmark:
+        return MaterialPageRoute(builder: (_) => Notifications());
+      case RouteNames.bookmark:
         return MaterialPageRoute(builder: (_) => Bookmark());
+      case RouteNames.otpPage:
+        return MaterialPageRoute(builder: (_) => OtpCodePage());
+      case RouteNames.mentors:
+        return MaterialPageRoute(builder: (_) => TopMentorsPage());
+      case RouteNames.topCourses:
+        return MaterialPageRoute(builder: (_) => MostPopularCoursesPage());
 
       default:
         return _defaultRoute();

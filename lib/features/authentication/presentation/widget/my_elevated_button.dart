@@ -17,7 +17,7 @@ class MyElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: appHeight(6.875), // 55 / 800 ~ 0.06875 * screenHeight
+      height: appHeight(6.875),
       width: double.infinity,
       child: ElevatedButton(
         onPressed: onPressed,
@@ -26,14 +26,14 @@ class MyElevatedButton extends StatelessWidget {
           color != null ? AppColor.greyScale600 : AppColor.disabledButton,
           side: const BorderSide(color: Color(0x00eeeeee)),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(appWidth(12.5)), // 50 / 400 ~ 0.125 * screenWidth
+            borderRadius: BorderRadius.circular(appWidth(12.5)),
           ),
         ),
         child: Text(
           text,
           style: TextStyle(
             fontWeight: FontWeight.w700,
-            fontSize: appWidth(4), // 16 / 400 ~ 0.04 * screenWidth
+            fontSize: appWidth(4),
             color: Colors.white,
           ),
         ),

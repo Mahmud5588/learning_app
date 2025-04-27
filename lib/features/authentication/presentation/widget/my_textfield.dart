@@ -44,18 +44,18 @@ class MyTextField extends StatelessWidget {
             suffixIcon: element,
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: AppColor.greyScale500),
-              borderRadius: BorderRadius.circular(appWidth(2.5)), // 10 / 400 ~ 0.025 * screenWidth
+              borderRadius: BorderRadius.circular(appWidth(2.5)),
             ),
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: AppColor.greyScale500),
-              borderRadius: BorderRadius.circular(appWidth(3.75)), // 15 / 400 ~ 0.0375 * screenWidth
+              borderRadius: BorderRadius.circular(appWidth(3.75)),
             ),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(appWidth(3.75)), // 15 / 400 ~ 0.0375 * screenWidth
+              borderRadius: BorderRadius.circular(appWidth(3.75)),
             ),
             contentPadding: EdgeInsets.symmetric(
-              horizontal: appWidth(4), // 16 / 400 ~ 0.04 * screenWidth
-              vertical: appHeight(3.125), // 25 / 800 ~ 0.03125 * screenHeight
+              horizontal: appWidth(4),
+              vertical: appHeight(3.125),
             ),
           ),
     );

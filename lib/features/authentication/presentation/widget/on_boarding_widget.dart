@@ -16,24 +16,24 @@ class OnBoardingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(appWidth(5)), // 20 / 400 ~ 0.05 * screenWidth
+      padding: EdgeInsets.all(appWidth(5)),
       child: Column(
         children: [
           Container(
-            height: appHeight(37.5), // 300 / 800 ~ 0.375 * screenHeight
+            height: appHeight(37.5),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(appWidth(5)), // 20 / 400 ~ 0.05 * screenWidth
+              borderRadius: BorderRadius.circular(appWidth(5)),
               border: Border.all(
                 color: _getBorderColor(),
-                width: appWidth(0.5), // 2 / 400 ~ 0.005 * screenWidth
+                width: appWidth(0.5),
               ),
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(appWidth(4.5)), // 18 / 400 ~ 0.045 * screenWidth
+              borderRadius: BorderRadius.circular(appWidth(4.5)),
               child: Image.asset(imagePath, fit: BoxFit.cover),
             ),
           ),
-          SizedBox(height: appHeight(18.75)), // 150 / 800 ~ 0.1875 * screenHeight
+          SizedBox(height: appHeight(18.75)),
           Text(
             title,
             textAlign: TextAlign.center,

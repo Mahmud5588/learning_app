@@ -24,30 +24,30 @@ class ContactOptionCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(appWidth(4)), // 16 / 400 ~ 0.04 * screenWidth
-        margin: EdgeInsets.symmetric(vertical: appHeight(1)), // 8 / 800 ~ 0.01 * screenHeight
+        padding: EdgeInsets.all(appWidth(4)),
+        margin: EdgeInsets.symmetric(vertical: appHeight(1)),
         height: appHeight(13.75), // 110 / 800 ~ 0.1375 * screenHeight
         decoration: BoxDecoration(
           color: isSelected ? Colors.blue.shade50 : Colors.grey.shade100,
-          borderRadius: BorderRadius.circular(appWidth(4)), // 16 / 400 ~ 0.04 * screenWidth
+          borderRadius: BorderRadius.circular(appWidth(4)),
           border: Border.all(
             color: isSelected ? AppColor.blue : AppColor.transparentBlue,
-            width: appWidth(0.5), // 2 / 400 ~ 0.005 * screenWidth
+            width: appWidth(0.5),
           ),
         ),
         child: Row(
           children: [
             CircleAvatar(
               backgroundColor: Colors.blue.shade100,
-              radius: appWidth(5), // 20 / 400 ~ 0.05 * screenWidth (taxminan, default radius)
+              radius: appWidth(5),
               child: Icon(icon, color: AppColor.white),
             ),
-            SizedBox(width: appWidth(4)), // 16 / 400 ~ 0.04 * screenWidth
+            SizedBox(width: appWidth(4)),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(title, style: TextStyle(color: AppColor.greyScale500)),
-                SizedBox(height: appHeight(0.5)), // 4 / 800 ~ 0.005 * screenHeight
+                SizedBox(height: appHeight(0.5)),
                 Text(
                   value,
                   style: AppTextStyles.bodyMediumRegular(color: AppColor.greyScale500),

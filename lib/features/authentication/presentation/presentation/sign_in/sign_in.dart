@@ -26,7 +26,7 @@ class SignIn extends StatelessWidget {
       backgroundColor: AppColor.white,
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: appWidth(5)), // 0.05 * screenWidth
+          padding: EdgeInsets.symmetric(horizontal: appWidth(5)),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -36,46 +36,46 @@ class SignIn extends StatelessWidget {
                   AppStrings.letsYouIn,
                   style: AppTextStyles.heading1(),
                 ),
-                SizedBox(height: appHeight(3)), // 0.03 * screenHeight
+                SizedBox(height: appHeight(3)),
                 ContinueWithButton(
                   onPressed: () {},
                   texts: AppStrings.continueFacebook,
                   icon: Icon(
                     Icons.facebook,
-                    size: appWidth(6), // 0.06 * screenWidth
+                    size: appWidth(6),
                     color: AppColor.blue,
                   ),
                 ),
-                SizedBox(height: appHeight(2)), // 0.02 * screenHeight
+                SizedBox(height: appHeight(2)),
                 ContinueWithButton(
                   onPressed: () {},
                   texts: AppStrings.continueGoogle,
                   icon: Image.asset(
                     "assets/images/google.png",
-                    width: appWidth(5), // 0.05 * screenWidth
-                    height: appWidth(5), // 0.05 * screenWidth
+                    width: appWidth(5),
+                    height: appWidth(5),
                   ),
                 ),
-                SizedBox(height: appHeight(2)), // 0.02 * screenHeight
+                SizedBox(height: appHeight(2)),
                 ContinueWithButton(
                   onPressed: () {},
                   texts: AppStrings.continueApple,
                   icon: Icon(
                     Icons.apple,
-                    size: appWidth(6), // 0.06 * screenWidth
+                    size: appWidth(6),
                     color: AppColor.black,
                   ),
                 ),
-                SizedBox(height: appHeight(3)), // 0.03 * screenHeight
+                SizedBox(height: appHeight(3)),
                 Row(
                   children: [
                     Expanded(
                       child: Divider(
                         color: Colors.grey,
-                        thickness: appWidth(0.2), // 0.002 * screenWidth
+                        thickness: appWidth(0.2),
                       ),
                     ),
-                    SizedBox(width: appWidth(2)), // 0.02 * screenWidth
+                    SizedBox(width: appWidth(2)),
                     Text(
                       AppStrings.or,
                       style: AppTextStyles.bodyXLargeSemiBold(color: AppColor.greyScale500),
@@ -83,19 +83,19 @@ class SignIn extends StatelessWidget {
                     Expanded(
                       child: Divider(
                         color: AppColor.greyScale500,
-                        thickness: appWidth(0.2), // 0.002 * screenWidth
+                        thickness: appWidth(0.2),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: appHeight(3)), // 0.03 * screenHeight
+                SizedBox(height: appHeight(3)),
                 MyElevatedButton(
                   text: AppStrings.signInWithPassword,
                   onPressed: () {
                     Navigator.pushNamed(context, RouteNames.login);
                   },
                 ),
-                SizedBox(height: appHeight(3)), // 0.03 * screenHeight
+                SizedBox(height: appHeight(3)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -103,7 +103,7 @@ class SignIn extends StatelessWidget {
                       AppStrings.haveNotAccount,
                       style: TextStyle(
                         color: AppColor.greyScale500,
-                        fontSize: appWidth(3.5), // 0.035 * screenWidth
+                        fontSize: appWidth(3.5),
                       ),
                     ),
                     TextButton(
@@ -114,7 +114,7 @@ class SignIn extends StatelessWidget {
                         AppStrings.signUp,
                         style: TextStyle(
                           color: AppColor.blue,
-                          fontSize: appWidth(3.5), // 0.035 * screenWidth
+                          fontSize: appWidth(3.5),
                         ),
                       ),
                     ),

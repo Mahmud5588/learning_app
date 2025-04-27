@@ -42,6 +42,8 @@ class AppStrings{
   static const  String dateOfBirth="Date of Birth";
   static const  String phoneNumber="Phone Number";
   static const  String gender="Gender";
+  static const  String firstName="Firstname";
+  static const  String lastName="Lastname";
   static const  String createNewPin="Create New Pin";
   static const  String createNewPinAbout="Add a PIN number to make your account more secure.";
   static const  String setYourFingerPrint="Set Your FingerPrint";

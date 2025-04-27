@@ -15,6 +15,8 @@ class ForgotPasswordPage extends StatefulWidget {
 }
 
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
   int selectedIndex = 0;
 
   @override
@@ -30,47 +32,51 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           icon: const Icon(Icons.arrow_back),
         ),
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.all(appWidth(4)),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: appHeight(30),
-                  child: Center(
-                    child: Image.asset("assets/images/forgot_password.png"),
-                  ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(appWidth(4)),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: appHeight(30),
+                child: Center(
+                  child: Image.asset("assets/images/forgot_password.png"),
                 ),
-                SizedBox(height: appHeight(4)),
-                Text(
-                  AppStrings.selectContact,
-                  style: AppTextStyles.bodyLargeMedium(color: AppColor.greyScale500),
-                ),
-                SizedBox(height: appHeight(2)),
-                ContactOptionCard(
-                  icon: Icons.sms,
-                  title: AppStrings.via + AppStrings.sms,
-                  value: "+1 111 ******99",
-                  isSelected: selectedIndex == 0,
-                  onTap: () => setState(() => selectedIndex = 0),
-                ),
-                SizedBox(height: appHeight(1)),
-                ContactOptionCard(
-                  icon: Icons.email,
-                  title: AppStrings.via + AppStrings.email,
-                  value: "and***ley@yourdomain.com",
-                  isSelected: selectedIndex == 1,
-                  onTap: () => setState(() => selectedIndex = 1),
-                ),
-                SizedBox(height: appHeight(3)),
-                MyElevatedButton(
-                  text: AppStrings.continueWord,
-                  onPressed: () => Navigator.pushNamed(context, RouteNames.sendCodePage),
-                ),
-              ],
-            ),
+              ),
+              SizedBox(height: appHeight(4)),
+              Text(
+                AppStrings.selectContact,
+                style: AppTextStyles.bodyLargeMedium(color: AppColor.greyScale500),
+              ),
+              SizedBox(height: appHeight(2)),
+              TextField(
+                controller: _emailController,
+              ),
+              // ContactOptionCard(
+              //   icon: Icons.sms,
+              //   title: AppStrings.via + AppStrings.sms,
+              //   value: "+1 111 ******99",
+              //   isSelected: selectedIndex == 0,
+              //   onTap: () => setState(() => selectedIndex = 0),
+              // ),
+              SizedBox(height: appHeight(1)),
+              TextField(
+                controller: _phoneController,
+              ),
+              // ContactOptionCard(
+              //   icon: Icons.email,
+              //   title: AppStrings.via + AppStrings.email,
+              //   value: "and***ley@yourdomain.com",
+              //   isSelected: selectedIndex == 1,
+              //   onTap: () => setState(() => selectedIndex = 1),
+              // ),
+              SizedBox(height: appHeight(3)),
+              MyElevatedButton(
+                text: AppStrings.continueWord,
+                onPressed: () => Navigator.pushNamed(context, RouteNames.sendCodePage),
+              ),
+            ],
           ),
         ),
       ),

@@ -13,4 +13,7 @@ class RouteNames {
   static const String setFingerPrint = "setFingerPrint";
   static const String notifications = "notifications";
   static const String bookmark = "bookmark";
+  static const String otpPage = "otpPage";
+  static const String mentors = "mentors";
+  static const String topCourses = "topCourses";
 }

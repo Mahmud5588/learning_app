@@ -17,7 +17,7 @@ class CodeField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: appWidth(15), // 60 / 400 ~ 0.15 * screenWidth
+      width: appWidth(10),
       child: TextField(
         focusNode: currentNode,
         obscureText: obscureCode ?? false,
@@ -31,7 +31,7 @@ class CodeField extends StatelessWidget {
         decoration: InputDecoration(
           counterText: '',
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(appWidth(3)), // 12 / 400 ~ 0.03 * screenWidth
+            borderRadius: BorderRadius.circular(appWidth(3)),
           ),
         ),
         onChanged: (value) {
